@@ -6,6 +6,7 @@ const request = require("request");
 
 // Setup Express
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Define paths for express configuration
 const publicDirectory = path.join(__dirname, "../public");
@@ -71,6 +72,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, (req, res) => {
-  console.log("listening on 3000...");
+app.listen(port, (req, res) => {
+  console.log("listening on " + port + "...");
 });

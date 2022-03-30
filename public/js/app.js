@@ -23,16 +23,14 @@ weatherForm.addEventListener("submit", (event) => {
 
   messageOne.textContent = "Loading weather...";
 
-  fetch("http://localhost:3000/weather?address=" + location).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          messageOne.textContent = data.error.message;
-        } else {
-          messageOne.textContent = data.forecast;
-          messageTwo.textContent = data.location;
-        }
-      });
-    }
-  );
+  fetch("/weather?address=" + location).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        messageOne.textContent = data.error.message;
+      } else {
+        messageOne.textContent = data.forecast;
+        messageTwo.textContent = data.location;
+      }
+    });
+  });
 });
